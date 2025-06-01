@@ -1,0 +1,131 @@
+{
+  "header": {
+    "logo": "Wholesale Store",
+    "search": "Search products...",
+    "nav": {
+      "currency": "Select Currency",
+      "home": "Home",
+      "products": "Products",
+      "blog": "Blog",
+      "contact": "Contact",
+      "cart": "Cart",
+      "profile": "Profile",
+      "toggleMenu": "Toggle navigation menu",
+      "closeModal": "Close cart modal",
+      "goToCart": "Go to cart",
+      "categories": {
+        "electronics": "Electronics",
+        "clothing": "Clothing",
+        "home": "Home & Garden",
+        "featured": "Featured Products",
+        "deals": "Deals",
+        "blog": "Blog"
+      },
+      "language": {
+        "select": "Select Language",
+        "switchTo": "Switch to {{language}}",
+        "english": "English",
+        "persian": "Persian",
+        "russian": "Russian"
+      }
+    },
+    "cartModal": {
+      "empty": "Your cart is empty",
+      "price": "Price",
+      "decreaseQuantity": "Decrease quantity for {{item}}",
+      "increaseQuantity": "Increase quantity for {{item}}",
+      "removeItem": "Remove {{item}} from cart",
+      "total": "Total"
+    }
+  },
+  "languageSwitcher": {
+    "selectLanguage": "Select language",
+    "switchTo": "Switch to {{language}}",
+    "english": "English",
+    "persian": "Persian",
+    "russian": "Russian"
+  },
+  "heroSection": {
+    "title": "Discover Premium Wholesale Products",
+    "description": "Explore our extensive range of high-quality products designed for businesses worldwide.",
+    "exploreProducts": "Explore Products"
+  },
+  "languages": {
+    "en": "English",
+    "fa": "Persian",
+    "ru": "Russian"
+  },
+  "featuredProducts": {
+    "title": "Featured Products",
+    "noProducts": "No products available at the moment.",
+    "viewDetails": "View Details",
+    "minimumOrder": "Minimum Order: {{minimumOrder}}"
+  },
+  "aboutSection": {
+    "title": "About B2B Bulk Sales",
+    "description": "We specialize in providing high-quality bulk products for businesses in Russia, Iran, and beyond. Our mission is to streamline your supply chain with reliable, cost-effective solutions tailored to your needs. Partner with us to access a global network of trusted suppliers.",
+    "getInTouch": "Get in Touch"
+  },
+  "customerSection": {
+    "title": "Our Customers",
+    "description": "We are proud to partner with leading businesses worldwide.",
+    "error": "Failed to load customer data. Please try again later."
+  },
+  "buyerSection": {
+    "title": "Why Buy with Us?",
+    "description": "Join thousands of businesses worldwide who trust us for their bulk supply needs.",
+    "step1": {
+      "title": "Explore Our Catalog",
+      "description": "Browse our extensive range of high-quality bulk products tailored for your business needs."
+    },
+    "step2": {
+      "title": "Request a Quote",
+      "description": "Contact us to get a customized quote based on your order size and requirements."
+    },
+    "step3": {
+      "title": "Streamlined Delivery",
+      "description": "Enjoy fast, reliable delivery to keep your supply chain running smoothly."
+    },
+    "getStarted": "Get Started"
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "testimonial1": {
+      "name": "Alexei Ivanov",
+      "company": "TechCorp Russia",
+      "quote": "B2B Bulk Sales transformed our supply chain with their reliable and efficient service. Highly recommended!"
+    },
+    "testimonial2": {
+      "name": "Sara Ahmadi",
+      "company": "Textile Solutions Iran",
+      "quote": "Their bulk fabrics are top-quality, and the ordering process is seamless. A true partner for our business."
+    }
+  },
+  "callToAction": {
+    "title": "Ready to Start Your Bulk Order?",
+    "description": "Contact us today to discuss your business needs and get a customized quote tailored to your requirements.",
+    "contactUs": "Contact Us"
+  },"blog": {
+    "title": "Our Blog",
+    "description": "Read the latest articles and insights.",
+    "searchPlaceholder": "Search posts...",
+    "searchButton": "Search",
+    "sortBy": "Sort by",
+    "sortByDate": "Date",
+    "sortByTitle": "Title",
+    "noPosts": "No posts found.",
+    "loading": "Loading...",
+    "error": {
+      "addToCart": "Failed to add to cart. Please try again.",
+      "generic": "Something went wrong. Please try again later."
+    },
+    "filterByCategory": "Filter by {{category}}",
+    "readMore": "Read More",
+    "addToCart": "Add to Cart",
+    "share": "Share {{title}}",
+    "share.copied": "Link copied to clipboard!",
+    "page": "Page {{page}}",
+    "recommendedFor": "Recommended for {{name}}",
+    "basedOnPreferences": "Based on your interests: {{categories}}"
+  }
+}

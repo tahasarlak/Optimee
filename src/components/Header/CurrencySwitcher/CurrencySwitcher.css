@@ -1,0 +1,69 @@
+/* CurrencySwitcher.css */
+.currency-menu {
+  position: relative;
+}
+
+.currency-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--secondary-color);
+  border-radius: 0.5rem;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.currency-button:hover {
+  background-color: var(--hover-accent);
+  color: var(--accent-color);
+}
+
+.currency-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+.currency-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.currency-menu-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  width: 128px;
+  background-color: var(--background-light);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  z-index: 10;
+}
+
+.currency-menu-content {
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.currency-menu-item {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.currency-menu-item:hover,
+.currency-menu-item.selected {
+  background-color: var(--secondary-color);
+  color: var(--accent-color);
+}

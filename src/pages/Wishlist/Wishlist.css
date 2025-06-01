@@ -1,0 +1,17 @@
+.wishlist-page {
+  color: var(--text-primary);
+}
+
+.wishlist-item {
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.wishlist-item button {
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+}
+
+.wishlist-item button:hover {
+  background-color: var(--hover-accent);
+}

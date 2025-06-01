@@ -1,0 +1,28 @@
+.signup-page {
+  color: var(--text-primary);
+  background-color: var(--background-light);
+}
+
+.signup-page form {
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.signup-page input {
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.signup-page input:focus {
+  border-color: var(--focus-ring);
+  box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+.signup-page button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.signup-page button:hover {
+  background-color: #1d4ed8;
+}

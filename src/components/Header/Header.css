@@ -1,0 +1,44 @@
+/* Header.css */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--background-light);
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 64px;
+}
+
+.header-mobile-toggle {
+  display: none;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.header-mobile-toggle:hover {
+  background-color: var(--secondary-color);
+}
+
+.header-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .header-mobile-toggle {
+    display: block;
+  }
+}

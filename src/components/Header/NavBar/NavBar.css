@@ -1,0 +1,122 @@
+/* NavBar.css */
+.nav {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  font-size: 1rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent-color);
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-button {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  transition: color 0.2s ease;
+}
+
+.dropdown-button:hover {
+  color: var(--accent-color);
+}
+
+.dropdown-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 0.25rem;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  width: 256px;
+  background-color: var(--background-light);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  pointer-events: auto;
+}
+
+.dropdown-content {
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.dropdown-link:hover {
+  background-color: var(--secondary-color);
+  color: var(--accent-color);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-button,
+.cart-button {
+  position: relative;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.search-button:hover,
+.cart-button:hover {
+  color: var(--accent-color);
+}
+
+.search-icon,
+.cart-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 0.75rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    display: flex;
+  }
+}

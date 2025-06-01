@@ -1,0 +1,68 @@
+/* StickyCTABar.css */
+.sticky-cta-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--accent-color);
+  padding: 1rem;
+  z-index: 50;
+  box-shadow: 0 -2px 8px var(--shadow-color);
+}
+
+.sticky-cta-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.sticky-cta-text {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sticky-cta-button {
+  padding: 0.5rem 1.5rem;
+  background-color: var(--background-light);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.sticky-cta-button:hover {
+  background-color: var(--hover-accent);
+  transform: scale(1.05);
+}
+
+.sticky-cta-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+@media (max-width: 768px) {
+  .sticky-cta-text {
+    font-size: 1rem;
+  }
+
+  .sticky-cta-button {
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sticky-cta-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .sticky-cta-text {
+    font-size: 0.875rem;
+  }
+}

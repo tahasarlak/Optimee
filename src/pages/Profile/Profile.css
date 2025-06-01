@@ -1,0 +1,8 @@
+.profile-page {
+  color: var(--text-primary);
+}
+
+.profile-details {
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 6px var(--shadow-color);
+}

@@ -1,0 +1,109 @@
+/* CustomerSection.css */
+.customer-section {
+  position: relative;
+  padding: 4rem 1rem;
+  background-color: var(--background-light);
+  overflow: hidden;
+}
+
+.customer-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+  z-index: 1;
+}
+
+.customer-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.customer-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-shadow: 0 2px 4px var(--shadow-color);
+  margin-bottom: 1.5rem;
+}
+
+.customer-description {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.8;
+}
+
+.customer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  role: list;
+}
+
+.customer-card {
+  background-color: var(--background-light);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.customer-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.customer-logo {
+  width: 100%;
+  height: 80px;
+  object-fit: contain;
+}
+
+.customer-loading-card {
+  width: 150px;
+  height: 80px;
+  background-color: var(--secondary-color);
+  border-radius: 0.5rem;
+}
+
+.customer-error {
+  font-size: 1.125rem;
+  color: var(--accent-color);
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .customer-title {
+    font-size: 2rem;
+  }
+
+  .customer-description {
+    font-size: 1rem;
+  }
+
+  .customer-logo {
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .customer-title {
+    font-size: 1.75rem;
+  }
+
+  .customer-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}

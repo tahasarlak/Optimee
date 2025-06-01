@@ -1,0 +1,15 @@
+:root {
+  --primary-color: #ffffff; /* سفید خالص برای عناصر اصلی */
+  --secondary-color: #b3b3b3; /* خاکستری روشن برای پس‌زمینه‌های ثانویه */
+  --text-primary: #ffffff; /* سفید برای متن اصلی */
+  --text-secondary: #999999; /* خاکستری متوسط برای متن ثانویه */
+  --accent-color: #cccccc; /* خاکستری روشن برای اکسنت */
+  --hover-accent: #666666; /* خاکستری تیره‌تر برای حالت هاور */
+  --background-light: #000000; /* مشکی خالص برای پس‌زمینه اصلی */
+  --shadow-color: rgba(255, 255, 255, 0.2); /* سایه سفید ملایم برای تم مشکی */
+  --border-color: #333333; /* خاکستری تیره برای حاشیه‌ها */
+  --focus-ring: #b3b3b3; /* خاکستری روشن برای حلقه فوکوس */
+}
+body{
+  background-color: var(--background-light);
+}

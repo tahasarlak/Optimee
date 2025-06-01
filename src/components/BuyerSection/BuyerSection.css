@@ -1,0 +1,126 @@
+/* BuyerSection.css */
+.buyer-section {
+  position: relative;
+  padding: 4rem 1rem;
+  background-color: var(--background-light);
+  overflow: hidden;
+}
+
+.buyer-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+  z-index: 1;
+}
+
+.buyer-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.buyer-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-shadow: 0 2px 4px var(--shadow-color);
+  margin-bottom: 1.5rem;
+}
+
+.buyer-description {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.8;
+}
+
+.buyer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.buyer-card {
+  background-color: var(--background-light);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.buyer-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.buyer-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.buyer-card-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.buyer-cta-container {
+  margin-top: 3rem;
+}
+
+.buyer-cta {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background-color: var(--accent-color);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.buyer-cta:hover {
+  background-color: var(--hover-accent);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.buyer-cta:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+@media (max-width: 768px) {
+  .buyer-title {
+    font-size: 2rem;
+  }
+
+  .buyer-description {
+    font-size: 1rem;
+  }
+
+  .buyer-card-title {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .buyer-title {
+    font-size: 1.75rem;
+  }
+
+  .buyer-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,8 @@
+.orders-page {
+  color: var(--text-primary);
+}
+
+.order-item {
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 6px var(--shadow-color);
+}

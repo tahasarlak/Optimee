@@ -1,0 +1,28 @@
+.login-page {
+  color: var(--text-primary);
+  background-color: var(--background-light);
+}
+
+.login-page form {
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.login-page input {
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.login-page input:focus {
+  border-color: var(--focus-ring);
+  box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+.login-page button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.login-page button:hover {
+  background-color: #1d4ed8;
+}

@@ -24,6 +24,14 @@
           "inset"
         ]
       }
+    ],
+    "compat-api/html": [
+      "default",
+      {
+        "ignore": [
+          "img[loading]"
+        ]
+      }
     ]
   }
 }

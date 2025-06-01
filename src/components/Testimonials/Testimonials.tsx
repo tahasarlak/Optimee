@@ -44,14 +44,14 @@ const Testimonials: React.FC<TestimonialsProps> = ({ maxTestimonials = 2 }) => {
         name: t('testimonials.testimonial1.name'),
         company: t('testimonials.testimonial1.company'),
         quote: t('testimonials.testimonial1.quote'),
-        avatar: '/assets/avatars/alexei.jpg',
+        avatar: '/assets/avatars/avatars.jpg',
       },
       {
         id: 2,
         name: t('testimonials.testimonial2.name'),
         company: t('testimonials.testimonial2.company'),
         quote: t('testimonials.testimonial2.quote'),
-        avatar: '/assets/avatars/sara.jpg',
+        avatar: '/assets/avatars/avatars.jpg',
       },
     ].slice(0, maxTestimonials),
     [t, maxTestimonials]

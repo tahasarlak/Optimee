@@ -21,7 +21,6 @@ const staticCustomers: Customer[] = [
   { id: 1, name: 'TechCorp Russia', logo: '/assets/customers/techcorp.jpg', url: 'https://techcorp.example.com' },
   { id: 2, name: 'Textile Solutions Iran', logo: '/assets/customers/textile-solutions.jpg', url: 'https://textile-solutions.example.com' },
   { id: 3, name: 'Global Industries', logo: '/assets/customers/global-industries.jpg', url: 'https://global-industries.example.com' },
-  { id: 4, name: 'Mega Supplies', logo: '/assets/customers/mega-supplies.jpg', url: 'https://mega-supplies.example.com' },
 ];
 
 const CustomerSection: React.FC<CustomerSectionProps> = ({ maxCustomers = 4 }) => {

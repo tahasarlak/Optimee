@@ -19,7 +19,7 @@ const Logo: React.FC = () => {
         aria-label={t('logo.ariaLabel')}
       >
         <img
-          src="/Logo.png"
+          src="/assets/logo/logo.png"
           alt={t('logo.alt')}
           className="logo-image"
           loading="lazy"

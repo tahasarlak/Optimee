@@ -1,8 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useUser } from '../UserContext/UserContext';
 
-// Define Blog Post interface
-interface BlogPost {
+export interface BlogPost {
   id: string;
   title: string;
   excerpt: string;
@@ -12,7 +11,6 @@ interface BlogPost {
   image?: string;
 }
 
-// Blog Context
 interface BlogContextType {
   posts: BlogPost[];
   categories: string[];
@@ -30,7 +28,6 @@ export const useBlog = () => {
   return context;
 };
 
-// Blog Provider
 export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user } = useUser();
   const [posts, setPosts] = useState<BlogPost[]>([
@@ -39,36 +36,53 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
       title: 'Top Tech Trends in 2025',
       excerpt: 'Discover the latest innovations shaping the tech world.',
       content: 'Full content about tech trends...',
-      category: 'Technology',
+      category: 'Electronics',
       date: '2025-05-01',
-      image: 'https://via.placeholder.com/300',
+      image: 'https://via.placeholder.com/300.webp',
     },
     {
       id: '2',
       title: 'Sustainable Fashion Tips',
       excerpt: 'Learn how to shop sustainably with these tips.',
       content: 'Full content about sustainable fashion...',
-      category: 'Fashion',
+      category: 'Textiles',
       date: '2025-04-20',
-      image: 'https://via.placeholder.com/300',
+      image: 'https://via.placeholder.com/300.webp',
     },
     {
       id: '3',
       title: 'Smart Home Gadgets',
       excerpt: 'Explore the best gadgets for your home.',
       content: 'Full content about smart home gadgets...',
-      category: 'Technology',
+      category: 'Electronics',
       date: '2025-04-15',
-      image: 'https://via.placeholder.com/300',
+      image: 'https://via.placeholder.com/300.webp',
     },
   ]);
-
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const categories = ['All', ...new Set(posts.map((post) => post.category))];
 
-  // Filter posts based on user preferences if user is logged in
   useEffect(() => {
-    if (user && user.preferredCategories.length > 0) {
+    const fetchPosts = async () => {
+      if (!navigator.onLine) {
+        return;
+      }
+      try {
+        // فرضاً از API پست‌ها را دریافت می‌کنیم
+        // const response = await axios.get('https://api.example.com/blog-posts');
+        // setPosts(response.data.map((p: BlogPost) => ({
+        //   ...p,
+        //   image: p.image?.replace('.jpg', '.webp') || '/assets/fallback.webp',
+        // })));
+      } catch (err) {
+        console.error('Failed to fetch blog posts', err);
+      }
+    };
+    fetchPosts();
+  }, []);
+
+  useEffect(() => {
+    if (user && user.preferredCategories?.length > 0) {
       setSelectedCategory(user.preferredCategories[0]);
     }
   }, [user]);

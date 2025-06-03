@@ -1,5 +1,5 @@
 import React, { useState, useContext, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ShoppingCart, Search, ChevronDown } from 'react-feather';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -9,6 +9,7 @@ import AuthButton from '../AuthButton/AuthButton';
 import NotificationBadge from '../NotificationBadge/NotificationBadge';
 import LanguageSwitcher from '../../LanguageSwitcher/LanguageSwitcher';
 import { AuthContext } from '../../../Context/AuthContext/AuthContext';
+import { useProductContext } from '../../../Context/ProductContext/ProductContext';
 import './NavBar.css';
 
 interface NavBarProps {
@@ -20,17 +21,16 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = ({ toggleCartModal, totalItems, toggleSearchModal }) => {
   const { t } = useTranslation();
   const { isAuthenticated } = useContext(AuthContext);
+  const { categories } = useProductContext();
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleProductsMenu = useCallback(() => setIsProductsOpen((prev) => !prev), []);
 
-  const productCategories = [
-    { name: t('nav.categories.electronics'), path: '/products/electronics' },
-    { name: t('nav.categories.clothing'), path: '/products/clothing' },
-    { name: t('nav.categories.home'), path: '/products/home' },
-    { name: t('nav.categories.featured'), path: '/products/featured' },
-    { name: t('nav.categories.deals'), path: '/products/deals' },
-  ];
+  const handleCategoryClick = (categoryPath: string) => {
+    setIsProductsOpen(false);
+    navigate(categoryPath);
+  };
 
   return (
     <motion.nav
@@ -39,9 +39,9 @@ const NavBar: React.FC<NavBarProps> = ({ toggleCartModal, totalItems, toggleSear
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <Link to="/" className="nav-link">
+      <a href="/" className="nav-link">
         {t('nav.home')}
-      </Link>
+      </a>
       <div className="dropdown">
         <button
           onClick={toggleProductsMenu}
@@ -60,25 +60,28 @@ const NavBar: React.FC<NavBarProps> = ({ toggleCartModal, totalItems, toggleSear
           transition={{ duration: 0.3 }}
         >
           <div className="dropdown-content">
-            {productCategories.map((category) => (
-              <Link
-                key={category.path}
-                to={category.path}
-                className="dropdown-link"
-                onClick={() => setIsProductsOpen(false)}
-              >
-                {category.name}
-              </Link>
-            ))}
+            {categories.map((category) => {
+              const Icon = category.icon;
+              return (
+                <button
+                  key={category.path}
+                  onClick={() => handleCategoryClick(category.path)}
+                  className="dropdown-link"
+                >
+                  <Icon className="category-icon" />
+                  <span>{t(`nav.categories.${category.name}`, category.title)}</span>
+                </button>
+              );
+            })}
           </div>
         </motion.div>
       </div>
-      <Link to="/contact" className="nav-link">
+      <a href="/contact" className="nav-link">
         {t('nav.contact')}
-      </Link>
-      <Link to="/blog" className="nav-link">
+      </a>
+      <a href="/blog" className="nav-link">
         {t('nav.blog')}
-      </Link>
+      </a>
       <div className="nav-actions">
         <button
           onClick={toggleSearchModal}

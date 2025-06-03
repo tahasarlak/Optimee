@@ -1,4 +1,3 @@
-/* CurrencySwitcher.css */
 .currency-menu {
   position: relative;
 }
@@ -7,24 +6,25 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: 1px solid var(--button-border);
+  border-radius: var(--button-radius);
   padding: 0.5rem 0.75rem;
-  background-color: var(--secondary-color);
-  border-radius: 0.5rem;
-  color: var(--text-primary);
   font-size: 0.875rem;
   font-weight: 500;
-  border: none;
-  transition: all 0.2s ease;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .currency-button:hover {
-  background-color: var(--hover-accent);
+  background-color: var(--button-bg-hover);
   color: var(--accent-color);
 }
 
 .currency-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--focus-ring);
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 .currency-icon {
@@ -38,32 +38,41 @@
   top: 100%;
   right: 0;
   margin-top: 0.5rem;
-  width: 128px;
+  width: 120px;
   background-color: var(--background-light);
-  border-radius: 0.5rem;
+  border-radius: var(--button-radius);
   box-shadow: 0 4px 12px var(--shadow-color);
   z-index: 10;
 }
 
 .currency-menu-content {
-  padding: 0.5rem 0;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  padding: 0.5rem 0;
 }
 
 .currency-menu-item {
+  background: none;
+  border: none;
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
   color: var(--text-primary);
-  background: none;
-  border: none;
   text-align: left;
-  transition: all 0.2s ease;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.currency-menu-item:hover,
-.currency-menu-item.selected {
+.currency-menu-item:hover {
   background-color: var(--secondary-color);
   color: var(--accent-color);
+}
+
+.currency-menu-item:focus {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.currency-menu-item.selected {
+  background-color: var(--secondary-color);
+  font-weight: 600;
 }

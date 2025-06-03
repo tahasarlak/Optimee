@@ -1,0 +1,314 @@
+.product-card {
+  background-color: #000; /* پس‌زمینه مشکی */
+  border: 2px solid var(--secondary-color); /* حاشیه با رنگ دوم */
+  border-radius: var(--button-radius); /* شعاع گوشه */
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px var(--shadow-color);
+}
+
+.product-card-list {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1rem;
+  flex-wrap: wrap;
+  background-color: #000; /* پس‌زمینه مشکی برای حالت لیست */
+  border: 2px solid var(--secondary-color);
+  border-radius: var(--button-radius);
+}
+
+.product-card-table {
+  display: table-row;
+  background-color: #000; /* پس‌زمینه مشکی برای حالت جدول */
+}
+
+.product-status {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--button-radius);
+  color: var(--background-light);
+  backdrop-filter: blur(3px);
+  z-index: 10;
+}
+
+.product-status.in-stock {
+  background-color: rgba(76, 175, 80, 0.9); /* سبز برای موجود */
+}
+
+.product-status.out-of-stock {
+  background-color: rgba(244, 67, 54, 0.9); /* قرمز برای ناموجود */
+}
+
+.low-stock {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--button-radius);
+  background-color: rgba(255, 152, 0, 0.9); /* نارنجی برای موجودی کم */
+  color: var(--background-light);
+  backdrop-filter: blur(3px);
+  z-index: 10;
+}
+
+.product-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.product-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--button-radius);
+  color: var(--background-light);
+  background-color: var(--border-color);
+  transition: background-color 0.2s ease;
+}
+
+.product-tag.tag-featured {
+  background: linear-gradient(135deg, #2196f3, #21cbf3); /* گرادیان آبی برای ویژه */
+}
+
+.product-tag.tag-trending {
+  background: linear-gradient(135deg, #ff5722, #ff8a50); /* گرادیان نارنجی برای ترند */
+}
+
+.product-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--button-radius);
+  margin-bottom: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05); /* زوم تصویر هنگام hover */
+}
+
+.product-image-list {
+  width: 120px;
+  height: 120px;
+}
+
+.product-image-table {
+  width: 80px;
+  height: 80px;
+}
+
+.product-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.product-content-list {
+  flex: 1;
+  flex-direction: column;
+}
+
+.product-content-table {
+  display: table-cell;
+  padding: 0.75rem;
+}
+
+.product-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.product-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.product-title a:hover {
+  color: var(--accent-color);
+}
+
+.product-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.category-link {
+  color: var(--accent-color);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.category-link:hover {
+  color: var(--hover-accent);
+}
+
+.product-price {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.discounted-price {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.discount-badge {
+  font-size: 0.75rem;
+  background: linear-gradient(135deg, #f44336, #ff6b6b); /* گرادیان قرمز برای تخفیف */
+  color: var(--background-light);
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--button-radius);
+  display: inline-flex;
+  align-items: center;
+}
+
+.product-minimum,
+.product-reviews {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.product-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.product-actions-list {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.product-actions-table {
+  display: table-cell;
+}
+
+.product-cta,
+.product-cta-add,
+.share-button,
+.product-compare {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: 1px solid var(--button-border);
+  border-radius: var(--button-radius);
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.product-cta:hover,
+.share-button:hover,
+.product-compare:hover {
+  background: linear-gradient(135deg, var(--button-bg-hover), var(--accent-color));
+  color: var(--background-light);
+  transform: translateY(-2px);
+}
+
+.product-cta:focus,
+.product-cta-add:focus,
+.share-button:focus,
+.product-compare:focus {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.product-cta-add {
+  background: linear-gradient(135deg, var(--accent-color), var(--hover-accent));
+  color: var(--background-light);
+  border: none;
+}
+
+.product-cta-add:hover {
+  background: linear-gradient(135deg, var(--hover-accent), var(--accent-color));
+  transform: translateY(-2px);
+}
+
+.product-cta-add.disabled {
+  background: var(--border-color);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+}
+
+.share-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.share-icon {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    padding: 1rem;
+  }
+
+  .product-card-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .product-image {
+    height: 180px;
+  }
+
+  .product-image-list {
+    width: 100%;
+    height: 150px;
+  }
+
+  .product-actions-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .product-title {
+    font-size: 1.125rem;
+  }
+
+  .product-price {
+    font-size: 1rem;
+  }
+}

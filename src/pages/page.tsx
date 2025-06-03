@@ -44,7 +44,7 @@ const Home: React.FC = () => {
 <HeroSection
   backgroundImage="/to/hero-image.jpg"
   fallbackImage="/path/to/fallback-image.jpg"
-  ctaLink="/shop"
+  ctaLink="/products"
 />        <FeaturedProducts products={products} />
         <AboutSection />
         <CustomerSection />

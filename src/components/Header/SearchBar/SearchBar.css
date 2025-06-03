@@ -1,14 +1,8 @@
 .search-container {
+  display: none;
   flex: 1;
   margin: 0 1rem;
-  max-width: 32rem;
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .search-container {
-    display: flex;
-  }
+  max-width: 400px;
 }
 
 .search-input-wrapper {
@@ -17,37 +11,45 @@
 }
 
 .search-input {
+  background-color: var(--form-bg);
+  color: var(--form-text);
+  border: 1px solid var(--form-border);
+  border-radius: 9999px; /* معادل rounded-full برای گوشه‌های کاملا گرد */
+  padding: 0.5rem 2.5rem 0.5rem 0.75rem; /* پدینگ برای جایگذاری آیکون جستجو */
+  font-size: 1rem;
   width: 100%;
-  padding: 0.5rem 1rem 0.5rem 2.5rem;
-  color: var(--text-color);
-  border: 1px solid var(--primary-border);
-  border-radius: 9999px;
-  outline: none;
-  transition: all 0.2s ease-in-out;
-  font-size: 0.875rem;
-}
-
-.search-input:focus {
-  border-color: transparent;
-  box-shadow: 0 0 0 2px var(--focus-ring);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .search-input::placeholder {
-  color: #9ca3af;
+  color: var(--form-placeholder);
 }
 
-.search-icon {
+.search-input:hover {
+  background-color: var(--form-bg-hover);
+  border-color: var(--accent-color);
+}
+
+.search-input:focus {
+  outline: 2px solid var(--focus-ring);
+  border-color: var(--accent-color);
+  background-color: var(--form-bg-hover);
+}
+
+.search-input-wrapper::before {
+  content: '';
   position: absolute;
-  left: 0.75rem;
   top: 50%;
+  left: 0.75rem;
   transform: translateY(-50%);
-  width: 1.25rem;
-  height: 1.25rem;
-  color: var(--icon-color);
+  width: 20px;
+  height: 20px;
+  background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3ccircle cx='11' cy='11' r='8'%3e%3c/circle%3e%3cline x1='21' y1='21' x2='16.65' y2='16.65'%3e%3c/line%3e%3c/svg%3e") no-repeat center;
+  background-size: contain;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 768px) {
   .search-container {
-    margin: 0 0.5rem;
+    display: flex;
   }
 }

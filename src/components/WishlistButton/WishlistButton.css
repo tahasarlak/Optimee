@@ -1,0 +1,23 @@
+.wishlist-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.wishlist-button.active .wishlist-icon {
+  color: var(--primary-color, #ff0000);
+  fill: var(--primary-color, #ff0000);
+}
+
+.wishlist-icon {
+  width: 24px;
+  height: 24px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .wishlist-button {
+    color: var(--text-color, #fff);
+  }
+}

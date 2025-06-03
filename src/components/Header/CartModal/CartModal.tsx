@@ -4,8 +4,11 @@ import { X, Trash2 } from 'react-feather';
 import Modal from 'react-modal';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { useCart } from '../../../Context/CartContext/CartContext';
 import './CartModal.css';
+import { useCart } from '../../../Context/CartContext/CartContext';
+import { normalizePrice } from '../../../Context/ProductContext/ProductContext';
+
+Modal.setAppElement('#root');
 
 interface CartModalProps {
   isOpen: boolean;
@@ -14,7 +17,7 @@ interface CartModalProps {
 
 const CartModal: React.FC<CartModalProps> = ({ isOpen, toggleModal }) => {
   const { t } = useTranslation();
-  const { cartItems, removeFromCart, updateQuantity, totalPrice } = useCart();
+  const { cart, removeFromCart, updateQuantity, totalPrice } = useCart();
 
   return (
     <Modal
@@ -31,60 +34,60 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, toggleModal }) => {
         transition={{ duration: 0.3 }}
       >
         <div className="cart-modal-header">
-          <h2 className="cart-modal-title">{t('cart.title')}</h2>
+          <h2 className="cart-modal-title">{t('cartModal.title', 'Your Cart')}</h2>
           <button
             onClick={toggleModal}
             className="cart-modal-close"
-            aria-label={t('cart.close')}
+            aria-label={t('cartModal.close', 'Close cart modal')}
           >
             <X className="cart-modal-icon" />
           </button>
         </div>
 
-        {cartItems.length === 0 ? (
-          <p className="cart-modal-empty">{t('cart.empty')}</p>
+        {cart.length === 0 ? (
+          <p className="cart-modal-empty">{t('cartModal.empty', 'Your cart is empty.')}</p>
         ) : (
           <div className="cart-modal-items">
-            {cartItems.map((item) => (
-              <div key={item.id} className="cart-modal-item">
+            {cart.map((item) => (
+              <div key={item.product.id} className="cart-modal-item">
                 <div className="cart-item-details">
-                  {item.image && (
+                  {item.product.image && (
                     <img
-                      src={item.image}
-                      alt={item.name}
+                      src={item.product.image}
+                      alt={item.product.title}
                       className="cart-item-image"
                       loading="lazy"
                       onError={(e) => (e.currentTarget.src = '/assets/fallback-item.png')}
                     />
                   )}
                   <div>
-                    <p className="cart-item-name">{item.name}</p>
+                    <p className="cart-item-name">{item.product.title}</p>
                     <p className="cart-item-price">
-                      {t('Price')}: ${item.price.toFixed(2)} x {item.quantity}
+                      {t('cartModal.price', 'Price')}: ${normalizePrice(item.product.price).toFixed(2)} x {item.quantity}
                     </p>
                   </div>
                 </div>
                 <div className="cart-item-controls">
                   <button
-                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                    onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
                     className="cart-quantity-btn"
-                    aria-label={t('cart.decrease', { item: item.name })}
+                    aria-label={t('cartModal.decreaseQuantity', { item: item.product.title })}
                     disabled={item.quantity <= 1}
                   >
                     -
                   </button>
                   <span className="cart-quantity">{item.quantity}</span>
                   <button
-                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                    onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                     className="cart-quantity-btn"
-                    aria-label={t('cart.increase', { item: item.name })}
+                    aria-label={t('cartModal.increaseQuantity', { item: item.product.title })}
                   >
                     +
                   </button>
                   <button
-                    onClick={() => removeFromCart(item.id)}
+                    onClick={() => removeFromCart(item.product.id)}
                     className="cart-remove-btn"
-                    aria-label={t('cart.remove', { item: item.name })}
+                    aria-label={t('cartModal.removeItem', { item: item.product.title })}
                   >
                     <Trash2 className="cart-trash-icon" />
                   </button>
@@ -93,7 +96,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, toggleModal }) => {
             ))}
             <div className="cart-total">
               <p className="cart-total-text">
-                {t('cart.total')}: ${totalPrice.toFixed(2)}
+                {t('cartModal.total', 'Total')}: ${totalPrice}
               </p>
             </div>
           </div>
@@ -103,17 +106,17 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, toggleModal }) => {
           <button
             onClick={toggleModal}
             className="cart-close-btn"
-            aria-label={t('cart.close')}
+            aria-label={t('cartModal.close', 'Close')}
           >
-            {t('cart.close')}
+            {t('cartModal.close', 'Close')}
           </button>
           <Link
             to="/cart"
             onClick={toggleModal}
             className="cart-checkout-btn"
-            aria-label={t('cart.checkout')}
+            aria-label={t('cartModal.checkout', 'Proceed to checkout')}
           >
-            {t('cart.checkout')}
+            {t('cartModal.checkout', 'Checkout')}
           </Link>
         </div>
       </motion.div>

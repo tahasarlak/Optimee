@@ -1,3 +1,23 @@
 .menu-button {
-  color: var(--secondary-color);
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: var(--button-radius);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.menu-button:hover {
+  background-color: var(--button-bg-hover);
+}
+
+.menu-button:focus {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.menu-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--text-primary);
 }

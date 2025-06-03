@@ -1,4 +1,3 @@
-/* Header.css */
 .header {
   position: sticky;
   top: 0;
@@ -23,12 +22,17 @@
   padding: 0.5rem;
   background: none;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: var(--button-radius);
   transition: background-color 0.2s ease;
 }
 
 .header-mobile-toggle:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--button-bg-hover);
+}
+
+.header-mobile-toggle:focus {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 .header-icon {

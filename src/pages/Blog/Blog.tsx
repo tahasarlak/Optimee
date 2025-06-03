@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect, useMemo, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useBlog } from '../../Context/BlogContext/BlogContext';
 import { useCart } from '../../Context/CartContext/CartContext';
@@ -9,6 +8,15 @@ import { Helmet } from 'react-helmet-async';
 import { Search, Share2 } from 'react-feather';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+
+interface BlogPost {
+  id: string;
+  title: string;
+  image?: string;
+  excerpt: string;
+  date: string;
+  category: string;
+}
 
 const Blog: React.FC = () => {
   const { t } = useTranslation();
@@ -59,17 +67,21 @@ const Blog: React.FC = () => {
     currentPage * postsPerPage
   );
 
-  const handleAddToCart = (post: { id: string; title: string; image?: string }) => {
+  const handleAddToCart = (post: BlogPost) => {
     try {
       addToCart({
-        id: post.id,
-        name: post.title,
-        price: 10.00,
-        quantity: 1,
-        image: post.image,
+        id: parseInt(post.id),
+        title: post.title,
+        description: post.excerpt,
+        price: '$10.00',
+        image: post.image || '/assets/fallback-item.png',
+        category: post.category || 'Blog',
+        minimumOrder: '1 unit',
+        inStock: true,
+        brand: 'سیش'
       });
     } catch (err) {
-      setError(t('blog.error.addToCart'));
+      setError(t('blog.error.addToCart', 'Failed to add to cart'));
     }
   };
 
@@ -80,7 +92,7 @@ const Blog: React.FC = () => {
       url: shareUrl,
     }).catch(() => {
       navigator.clipboard.writeText(shareUrl);
-      alert(t('blog.share.copied'));
+      alert(t('blog.share.copied', 'Link copied to clipboard'));
     });
   };
 
@@ -92,15 +104,15 @@ const Blog: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>{t('blog.title')}</title>
-        <meta name="description" content={t('blog.description')} />
+        <title>{t('blog.title', 'Our Blog')}</title>
+        <meta name="description" content={t('blog.description', 'Read our latest blog posts')} />
         <meta name="keywords" content={categories.join(', ')} />
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Blog',
-            name: t('blog.title'),
-            description: t('blog.description'),
+            name: t('blog.title', 'Our Blog'),
+            description: t('blog.description', 'Read our latest blog posts'),
             blogPost: paginatedPosts.map((post) => ({
               '@type': 'BlogPosting',
               headline: post.title,
@@ -112,26 +124,26 @@ const Blog: React.FC = () => {
         </script>
       </Helmet>
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-6 text-center">{t('blog.title')}</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center">{t('blog.title', 'Our Blog')}</h1>
 
         <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-between items-center">
           <form
             onSubmit={(e) => e.preventDefault()}
             className="flex w-full sm:w-auto max-w-md"
-            aria-label={t('blog.search')}
+            aria-label={t('blog.search', 'Search blog posts')}
           >
             <input
               type="text"
-              placeholder={t('blog.searchPlaceholder')}
+              placeholder={t('blog.searchPlaceholder', 'Search posts...')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="flex-grow px-4 py-2 rounded-l-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600"
-              aria-label={t('blog.searchPlaceholder')}
+              aria-label={t('blog.searchPlaceholder', 'Search posts...')}
             />
             <button
               type="submit"
               className="px-4 py-2 bg-blue-600 text-white rounded-r-full hover:bg-blue-700"
-              aria-label={t('blog.searchButton')}
+              aria-label={t('blog.searchButton', 'Search')}
             >
               <Search size={20} />
             </button>
@@ -141,15 +153,15 @@ const Blog: React.FC = () => {
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as 'date' | 'title')}
               className="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600"
-              aria-label={t('blog.sortBy')}
+              aria-label={t('blog.sortBy', 'Sort by')}
             >
-              <option value="date">{t('blog.sortByDate')}</option>
-              <option value="title">{t('blog.sortByTitle')}</option>
+              <option value="date">{t('blog.sortByDate', 'Sort by Date')}</option>
+              <option value="title">{t('blog.sortByTitle', 'Sort by Title')}</option>
             </select>
           </div>
         </div>
 
-        {user && user.preferredCategories.length > 0 && (
+        {user && user.preferredCategories?.length > 0 && (
           <div className="mb-8">
             <h2 className="text-xl font-semibold mb-4">
               {t('blog.recommendedFor', { name: user.name })}
@@ -186,13 +198,13 @@ const Blog: React.FC = () => {
         {isLoading ? (
           <div className="text-center">
             <div className="animate-spin inline-block w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full"></div>
-            <p>{t('blog.loading')}</p>
+            <p>{t('blog.loading', 'Loading...')}</p>
           </div>
         ) : (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {paginatedPosts.length === 0 ? (
-                <p className="text-center col-span-full">{t('blog.noPosts')}</p>
+                <p className="text-center col-span-full">{t('blog.noPosts', 'No posts found.')}</p>
               ) : (
                 paginatedPosts.map((post) => (
                   <div
@@ -219,7 +231,7 @@ const Blog: React.FC = () => {
                           className="text-blue-600 hover:underline"
                           aria-label={t('blog.readMore', { title: post.title })}
                         >
-                          {t('blog.readMore')}
+                          {t('blog.readMore', 'Read More')}
                         </Link>
                         <div className="flex gap-2">
                           <button
@@ -227,7 +239,7 @@ const Blog: React.FC = () => {
                             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
                             aria-label={t('blog.addToCart', { title: post.title })}
                           >
-                            {t('blog.addToCart')}
+                            {t('blog.addToCart', 'Add to Cart')}
                           </button>
                           <button
                             onClick={() => handleShare(post)}

@@ -1,0 +1,41 @@
+.product-variants {
+  margin: 1rem 0;
+}
+
+.variant-group {
+  margin-bottom: 1rem;
+}
+
+.variant-label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.variant-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.variant-option {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+}
+
+.variant-option.active {
+  background: var(--primary-color, #007bff);
+  color: var(--text-color, #fff);
+}
+
+@media (prefers-color-scheme: dark) {
+  .variant-option {
+    border-color: var(--border-color, #555);
+  }
+
+  .variant-option.active {
+    background: var(--primary-color, #4a90e2);
+  }
+}

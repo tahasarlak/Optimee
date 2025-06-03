@@ -1,15 +1,18 @@
-import React, { useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+// src/components/FeaturedProducts/FeaturedProducts.tsx
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Product } from '../../Context/ProductContext/ProductContext';
+import { useCart } from '../../Context/CartContext/CartContext';
+import { useCompareContext } from '../../Context/CompareContext/CompareContext';
+import ProductSlider from '../ProductSlider/ProductSlider';
+import { toast } from 'react-toastify';
 import './FeaturedProducts.css';
 
-// Define types for props
 interface FeaturedProductsProps {
   products: Product[];
-  maxProducts?: number; // Optional prop to control number of displayed products
+  maxProducts?: number;
 }
 
 const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
@@ -17,47 +20,41 @@ const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
   maxProducts = 3,
 }) => {
   const { t, i18n } = useTranslation();
+  const { addToCart } = useCart();
+  const { addToCompare, removeFromCompare, compareItems } = useCompareContext();
   const controls = useAnimation();
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.2,
   });
 
-  // Animation trigger when section is in view
   useEffect(() => {
     if (inView) {
       controls.start('visible');
     }
   }, [controls, inView]);
 
-  // Animation variants for smooth entrance
-  const variants = {
-    hidden: { opacity: 0, y: 50, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.6, -0.05, 0.01, 0.99],
-        staggerChildren: 0.2,
-      },
-    },
-    card: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.6, ease: [0.6, -0.05, 0.01, 0.99] },
-    },
+  const handleShare = (product: Product) => {
+    const shareData = {
+      title: product.title,
+      text: product.description,
+      url: `${window.location.origin}/products/${product.id}`,
+    };
+    if (navigator.share) {
+      navigator.share(shareData)
+        .then(() => toast.success(t('products.shareSuccess', 'Product shared successfully!')))
+        .catch(() => toast.error(t('products.shareError', 'Failed to share product.')));
+    } else {
+      toast.info(t('products.shareFallback', 'Copy the product link to share: ') + shareData.url);
+      navigator.clipboard.writeText(shareData.url);
+    }
   };
 
-  // Memoize featured products
-  const featuredProducts = useMemo(
-    () => products.slice(0, maxProducts),
-    [products, maxProducts]
-  );
+  const handleTrack = (action: string, label: string) => {
+    console.log(`Tracking ${action}: ${label}`);
+  };
 
-  // Dynamic direction based on language
+  const featuredProducts = products.slice(0, maxProducts);
   const isRtl = i18n.language === 'fa';
 
   return (
@@ -70,70 +67,24 @@ const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
     >
       <div className="featured-overlay" />
       <div className="featured-container">
-        <motion.h2
-          initial="hidden"
-          animate={controls}
-          variants={variants}
-          className="featured-title"
-        >
-          {t('featuredProducts.title')}
-        </motion.h2>
-
-        {featuredProducts.length > 0 ? (
-          <motion.div
-            className="featured-grid"
-            initial="hidden"
-            animate={controls}
-            variants={variants}
-          >
-            {featuredProducts.map((product) => (
-              <motion.div
-                key={product.id}
-                className="featured-card"
-                variants={{ hidden: variants.hidden, visible: variants.card }}
-                whileHover={{ scale: 1.05, boxShadow: '0 8px 24px var(--shadow-color)' }}
-                transition={{ duration: 0.3 }}
-              >
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="featured-image"
-                  loading="lazy"
-                  onError={(e) => (e.currentTarget.src = '/assets/fallback.jpg')}
-                />
-                <div className="featured-content">
-                  <h3 className="featured-card-title">{product.title}</h3>
-                  <p className="featured-card-description">{product.description}</p>
-                  <p className="featured-card-price">{product.price}</p>
-                  <p className="featured-card-minimum">
-                    {t('featuredProducts.minimumOrder', {
-                      minimumOrder: product.minimumOrder,
-                    })}
-                  </p>
-                  <Link
-                    to={`/products/${product.id}`}
-                    className="featured-cta"
-                    aria-label={t('featuredProducts.viewDetails')}
-                  >
-                    {t('featuredProducts.viewDetails')}
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        ) : (
-          <motion.p
-            initial="hidden"
-            animate={controls}
-            variants={{ hidden: variants.hidden, visible: variants.card }}
-            className="featured-no-products"
-          >
-            {t('featuredProducts.noProducts')}
-          </motion.p>
-        )}
+     <ProductSlider
+  products={featuredProducts}
+  title={t('featuredProducts.title', 'Featured Products')}
+  viewMode="grid"
+  addToCart={addToCart}
+  addToCompare={addToCompare}
+  removeFromCompare={removeFromCompare}
+  compareItems={compareItems}
+  onShare={handleShare} // اصلاح به handleShare
+  onTrack={handleTrack} // اصلاح به handleTrack
+  slidesToShow={4}
+  onQuickView={(product) => console.log('Quick View', product)}
+  onShowReviews={(productId) => console.log('Show Reviews', productId)}
+  isInWishlist={(productId) => false}
+  addToWishlist={(productId) => console.log('Add to Wishlist', productId)}
+  removeFromWishlist={(productId) => console.log('Remove from Wishlist', productId)}
+/>
       </div>
-
-      {/* Decorative gradient */}
       <motion.div
         className="featured-gradient"
         initial={{ opacity: 0 }}

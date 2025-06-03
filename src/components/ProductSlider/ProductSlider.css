@@ -1,0 +1,70 @@
+.product-slider {
+  position: relative;
+  padding: 1rem 0;
+}
+
+.slider-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.slider-container {
+  display: flex;
+  width: 100%;
+  overflow: hidden; /* جلوگیری از سرریز */
+}
+
+.slider-item {
+  flex: 0 0 auto; /* جلوگیری از کوچک شدن آیتم‌ها */
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+}
+
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.slider-nav.prev {
+  left: 0;
+}
+
+.slider-nav.next {
+  right: 0;
+}
+
+.slider-nav.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.slider-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.pagination-dot {
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.pagination-dot.active {
+  background: #007bff;
+}
+
+.no-products {
+  text-align: center;
+  padding: 2rem;
+}

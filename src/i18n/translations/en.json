@@ -1,5 +1,46 @@
-{
-  "header": {
+
+{"products": {
+  "title": "محصولات ما",
+  "searchPlaceholder": "جستجوی محصولات...",
+  "searchAriaLabel": "جستجوی محصولات بر اساس عنوان یا توضیحات",
+  "categoryAriaLabel": "فیلتر محصولات بر اساس دسته‌بندی",
+  "sortAriaLabel": "مرتب‌سازی محصولات",
+  "sort": {
+    "default": "مرتب‌سازی پیش‌فرض",
+    "priceAsc": "قیمت: کم به زیاد",
+    "priceDesc": "قیمت: زیاد به کم",
+    "titleAsc": "عنوان: الف تا ی"
+  },
+  "stockAriaLabel": "فیلتر بر اساس وضعیت موجودی",
+  "stock": {
+    "all": "همه وضعیت‌های موجودی",
+    "inStock": "موجود",
+    "outOfStock": "ناموجود"
+  },
+  "priceRange": "بازه قیمتی",
+  "priceMinAriaLabel": "فیلتر حداقل قیمت",
+  "priceMaxAriaLabel": "فیلتر حداکثر قیمت",
+  "resultsCount": "{{count}} محصول یافت شد",
+  "loading": "در حال بارگذاری محصولات...",
+  "error": "بارگذاری محصولات ناموفق بود. لطفاً دوباره امتحان کنید.",
+  "noResults": "هیچ محصولی با معیارهای شما یافت نشد.",
+  "inStock": "موجود",
+  "outOfStock": "ناموجود",
+  "viewDetailsAria": "مشاهده جزئیات {{title}}",
+  "addToCartAria": "افزودن {{title}} به سبد خرید",
+  "addToCompareAria": "اضافه کردن {{title}} به مقایسه",
+  "removeFromCompareAria": "حذف {{title}} از مقایسه",
+  "addToCompare": "اضافه به مقایسه",
+  "removeFromCompare": "حذف از مقایسه",
+  "gridView": "نمایش گرید",
+  "listView": "نمایش لیست",
+  "previousPage": "صفحه قبلی",
+  "previous": "قبلی",
+  "nextPage": "صفحه بعدی",
+  "next": "بعدی"
+},
+
+
     "logo": "Wholesale Store",
     "search": "Search products...",
     "nav": {
@@ -30,13 +71,16 @@
       }
     },
     "cartModal": {
+      "title": "Your Cart",
       "empty": "Your cart is empty",
       "price": "Price",
       "decreaseQuantity": "Decrease quantity for {{item}}",
       "increaseQuantity": "Increase quantity for {{item}}",
       "removeItem": "Remove {{item}} from cart",
-      "total": "Total"
-    }
+      "total": "Total",
+      "close": "Close",
+      "checkout": "Checkout"
+    
   },
   "languageSwitcher": {
     "selectLanguage": "Select language",
@@ -105,9 +149,11 @@
     "title": "Ready to Start Your Bulk Order?",
     "description": "Contact us today to discuss your business needs and get a customized quote tailored to your requirements.",
     "contactUs": "Contact Us"
-  },"blog": {
+  },
+  "blog": {
     "title": "Our Blog",
     "description": "Read the latest articles and insights.",
+    "search": "Search blog posts",
     "searchPlaceholder": "Search posts...",
     "searchButton": "Search",
     "sortBy": "Sort by",

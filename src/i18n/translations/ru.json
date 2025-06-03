@@ -1,5 +1,45 @@
 {
-  "header": {
+  "products": {
+  "title": "محصولات ما",
+  "searchPlaceholder": "جستجوی محصولات...",
+  "searchAriaLabel": "جستجوی محصولات بر اساس عنوان یا توضیحات",
+  "categoryAriaLabel": "فیلتر محصولات بر اساس دسته‌بندی",
+  "sortAriaLabel": "مرتب‌سازی محصولات",
+  "sort": {
+    "default": "مرتب‌سازی پیش‌فرض",
+    "priceAsc": "قیمت: کم به زیاد",
+    "priceDesc": "قیمت: زیاد به کم",
+    "titleAsc": "عنوان: الف تا ی"
+  },
+  "stockAriaLabel": "فیلتر بر اساس وضعیت موجودی",
+  "stock": {
+    "all": "همه وضعیت‌های موجودی",
+    "inStock": "موجود",
+    "outOfStock": "ناموجود"
+  },
+  "priceRange": "بازه قیمتی",
+  "priceMinAriaLabel": "فیلتر حداقل قیمت",
+  "priceMaxAriaLabel": "فیلتر حداکثر قیمت",
+  "resultsCount": "{{count}} محصول یافت شد",
+  "loading": "در حال بارگذاری محصولات...",
+  "error": "بارگذاری محصولات ناموفق بود. لطفاً دوباره امتحان کنید.",
+  "noResults": "هیچ محصولی با معیارهای شما یافت نشد.",
+  "inStock": "موجود",
+  "outOfStock": "ناموجود",
+  "viewDetailsAria": "مشاهده جزئیات {{title}}",
+  "addToCartAria": "افزودن {{title}} به سبد خرید",
+  "addToCompareAria": "اضافه کردن {{title}} به مقایسه",
+  "removeFromCompareAria": "حذف {{title}} از مقایسه",
+  "addToCompare": "اضافه به مقایسه",
+  "removeFromCompare": "حذف از مقایسه",
+  "gridView": "نمایش گرید",
+  "listView": "نمایش لیست",
+  "previousPage": "صفحه قبلی",
+  "previous": "قبلی",
+  "nextPage": "صفحه بعدی",
+  "next": "بعدی"
+},
+
     "logo": "Оптовый магазин",
     "search": "Поиск товаров...",
     "nav": {
@@ -30,14 +70,17 @@
       }
     },
     "cartModal": {
+      "title": "Ваша корзина",
       "empty": "Ваша корзина пуста",
       "price": "Цена",
       "decreaseQuantity": "Уменьшить количество для {{item}}",
       "increaseQuantity": "Увеличить количество для {{item}}",
       "removeItem": "Удалить {{item}} из корзины",
-      "total": "Итого"
+      "total": "Итого",
+      "close": "Закрыть",
+      "checkout": "Оформить заказ"
     }
-  },
+,
   "languageSwitcher": {
     "selectLanguage": "Выбрать язык",
     "switchTo": "Переключиться на {{language}}",
@@ -105,5 +148,29 @@
     "title": "Готовы начать оптовый заказ?",
     "description": "Свяжитесь с нами сегодня, чтобы обсудить потребности вашего бизнеса и получить индивидуальное предложение, адаптированное к вашим требованиям.",
     "contactUs": "Связаться с нами"
+  },
+  "blog": {
+    "title": "Наш блог",
+    "description": "Читайте последние статьи и идеи.",
+    "search": "Поиск записей в блоге",
+    "searchPlaceholder": "Поиск записей...",
+    "searchButton": "Поиск",
+    "sortBy": "Сортировать по",
+    "sortByDate": "Дата",
+    "sortByTitle": "Заголовок",
+    "noPosts": "Записи не найдены.",
+    "loading": "Загрузка...",
+    "error": {
+      "addToCart": "Не удалось добавить в корзину. Пожалуйста, попробуйте снова.",
+      "generic": "Что-то пошло не так. Пожалуйста, попробуйте снова."
+    },
+    "filterByCategory": "Фильтр по {{category}}",
+    "readMore": "Читать далее",
+    "addToCart": "Добавить в корзину",
+    "share": "Поделиться {{title}}",
+    "share.copied": "Ссылка скопирована в буфер обмена!",
+    "page": "Страница {{page}}",
+    "recommendedFor": "Рекомендуется для {{name}}",
+    "basedOnPreferences": "На основе ваших интересов: {{categories}}"
   }
 }

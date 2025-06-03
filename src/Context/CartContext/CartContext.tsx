@@ -1,75 +1,82 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState } from 'react';
+import { toast } from 'react-toastify';
+import { Product, normalizePrice } from '../ProductContext/ProductContext';
+import { useTranslation } from 'react-i18next';
 
 interface CartItem {
-  id: string;
-  name: string;
-  price: number;
+  product: Product;
   quantity: number;
-  image?: string;
 }
 
 interface CartContextType {
-  cartItems: CartItem[];
-  addToCart: (item: CartItem) => void;
-  removeFromCart: (id: string) => void;
-  updateQuantity: (id: string, quantity: number) => void;
-  clearCart: () => void;
+  cart: CartItem[];
+  addToCart: (product: Product) => void;
+  removeFromCart: (productId: number) => void;
+  updateQuantity: (productId: number, quantity: number) => void;
+  totalPrice: string; // تغییر از number به string
   totalItems: number;
-  totalPrice: number;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { i18n } = useTranslation();
+  const [cart, setCart] = useState<CartItem[]>([]);
 
-  const addToCart = (item: CartItem) => {
-    setCartItems((prevItems) => {
-      const existingItem = prevItems.find((i) => i.id === item.id);
+  const addToCart = (product: Product) => {
+    setCart((prev) => {
+      const existingItem = prev.find((item) => item.product.id === product.id);
       if (existingItem) {
-        return prevItems.map((i) =>
-          i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
+        toast.info(`${product.title} quantity updated in cart!`);
+        window.gtag?.('event', 'add_to_cart', { event_category: 'Cart', event_label: product.title });
+        return prev.map((item) =>
+          item.product.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
-      return [...prevItems, item];
+      toast.success(`${product.title} added to cart!`);
+      window.gtag?.('event', 'add_to_cart', { event_category: 'Cart', event_label: product.title });
+      return [...prev, { product, quantity: 1 }];
     });
   };
 
-  const removeFromCart = (id: string) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  const removeFromCart = (productId: number) => {
+    setCart((prev) => {
+      const product = prev.find((item) => item.product.id === productId)?.product;
+      if (product) {
+        toast.info(`${product.title} removed from cart!`);
+        window.gtag?.('event', 'remove_from_cart', { event_category: 'Cart', event_label: product.title });
+      }
+      return prev.filter((item) => item.product.id !== productId);
+    });
   };
 
-  const updateQuantity = (id: string, quantity: number) => {
-    if (quantity < 1) {
-      removeFromCart(id);
-      return;
+  const updateQuantity = (productId: number, quantity: number) => {
+    if (quantity <= 0) {
+      removeFromCart(productId);
+    } else {
+      setCart((prev) =>
+        prev.map((item) =>
+          item.product.id === productId ? { ...item, quantity } : item
+        )
+      );
     }
-    setCartItems((prevItems) =>
-      prevItems.map((item) => (item.id === id ? { ...item, quantity } : item))
-    );
   };
 
-  const clearCart = () => {
-    setCartItems([]);
-  };
-
-  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+  const totalPrice = cart.reduce(
+    (sum, item) => sum + normalizePrice(item.product.price) * item.quantity,
     0
   );
 
+  const formattedTotalPrice = new Intl.NumberFormat(i18n.language === 'fa' ? 'fa-IR' : 'en-US', {
+    style: 'currency',
+    currency: i18n.language === 'fa' ? 'IRR' : 'USD',
+  }).format(totalPrice);
+
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <CartContext.Provider
-      value={{
-        cartItems,
-        addToCart,
-        removeFromCart,
-        updateQuantity,
-        clearCart,
-        totalItems,
-        totalPrice,
-      }}
+      value={{ cart, addToCart, removeFromCart, updateQuantity, totalPrice: formattedTotalPrice, totalItems }}
     >
       {children}
     </CartContext.Provider>
@@ -83,3 +90,5 @@ export const useCart = () => {
   }
   return context;
 };
+
+export default CartProvider;

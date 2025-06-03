@@ -1,5 +1,5 @@
 import React, { useState, useContext, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ShoppingCart, Search, ChevronDown } from 'react-feather';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -9,6 +9,7 @@ import AuthButton from '../AuthButton/AuthButton';
 import NotificationBadge from '../NotificationBadge/NotificationBadge';
 import LanguageSwitcher from '../../LanguageSwitcher/LanguageSwitcher';
 import { AuthContext } from '../../../Context/AuthContext/AuthContext';
+import { useProductContext } from '../../../Context/ProductContext/ProductContext';
 import './MobileMenu.css';
 
 interface MobileMenuProps {
@@ -28,17 +29,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 }) => {
   const { t } = useTranslation();
   const { isAuthenticated } = useContext(AuthContext);
+  const { categories } = useProductContext();
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleProductsMenu = useCallback(() => setIsProductsOpen((prev) => !prev), []);
 
-  const productCategories = [
-    { name: t('nav.categories.electronics'), path: '/products/electronics' },
-    { name: t('nav.categories.clothing'), path: '/products/clothing' },
-    { name: t('nav.categories.home'), path: '/products/home' },
-    { name: t('nav.categories.featured'), path: '/products/featured' },
-    { name: t('nav.categories.deals'), path: '/products/deals' },
-  ];
+  const handleCategoryClick = (categoryPath: string) => {
+    setIsProductsOpen(false);
+    toggleMobileMenu();
+    navigate(categoryPath);
+  };
 
   return (
     <motion.div
@@ -68,19 +69,19 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             animate={{ maxHeight: isProductsOpen ? 384 : 0, opacity: isProductsOpen ? 1 : 0 }}
             transition={{ duration: 0.2 }}
           >
-            {productCategories.map((category) => (
-              <Link
-                key={category.path}
-                to={category.path}
-                className="mobile-dropdown-link"
-                onClick={() => {
-                  setIsProductsOpen(false);
-                  toggleMobileMenu();
-                }}
-              >
-                {category.name}
-              </Link>
-            ))}
+            {categories.map((category) => {
+              const Icon = category.icon;
+              return (
+                <button
+                  key={category.path}
+                  onClick={() => handleCategoryClick(category.path)}
+                  className="mobile-dropdown-link"
+                >
+                  <Icon className="category-icon" />
+                  <span>{t(`nav.categories.${category.name}`, category.title)}</span>
+                </button>
+              );
+            })}
           </motion.div>
         </div>
         <Link to="/contact" className="mobile-nav-link" onClick={toggleMobileMenu}>

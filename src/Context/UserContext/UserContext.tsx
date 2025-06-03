@@ -1,14 +1,13 @@
 import React, { createContext, useContext, useState } from 'react';
 
-// Define User interface
 interface User {
   id: string;
   name: string;
   email: string;
   preferredCategories: string[];
+  browsingHistory: string[];
 }
 
-// User Context
 interface UserContextType {
   user: User | null;
   setUser: (user: User | null) => void;
@@ -24,17 +23,27 @@ export const useUser = () => {
   return context;
 };
 
-// User Provider
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>({
     id: '1',
     name: 'John Doe',
     email: 'john@example.com',
     preferredCategories: ['Technology', 'Fashion'],
+    browsingHistory: [],
   });
 
+  const updateUser = (newUser: User | null) => {
+    setUser(newUser);
+    if (newUser?.preferredCategories) {
+      window.gtag?.('event', 'set_preferred_categories', {
+        event_category: 'User',
+        event_label: newUser.preferredCategories.join(','),
+      });
+    }
+  };
+
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser: updateUser }}>
       {children}
     </UserContext.Provider>
   );

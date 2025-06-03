@@ -21,7 +21,8 @@
       {
         "ignore": [
           "position: sticky",
-          "inset"
+          "inset",
+          "backdrop-filter"
         ]
       }
     ],
@@ -32,6 +33,7 @@
           "img[loading]"
         ]
       }
-    ]
+    ],
+    "no-inline-styles": "off"
   }
 }

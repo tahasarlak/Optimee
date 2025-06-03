@@ -1,7 +1,46 @@
-{
- 
+{"products": {
+  "title": "محصولات ما",
+  "searchPlaceholder": "جستجوی محصولات...",
+  "searchAriaLabel": "جستجوی محصولات بر اساس عنوان یا توضیحات",
+  "categoryAriaLabel": "فیلتر محصولات بر اساس دسته‌بندی",
+  "sortAriaLabel": "مرتب‌سازی محصولات",
+  "sort": {
+    "default": "مرتب‌سازی پیش‌فرض",
+    "priceAsc": "قیمت: کم به زیاد",
+    "priceDesc": "قیمت: زیاد به کم",
+    "titleAsc": "عنوان: الف تا ی"
+  },
+  "stockAriaLabel": "فیلتر بر اساس وضعیت موجودی",
+  "stock": {
+    "all": "همه وضعیت‌های موجودی",
+    "inStock": "موجود",
+    "outOfStock": "ناموجود"
+  },
+  "priceRange": "بازه قیمتی",
+  "priceMinAriaLabel": "فیلتر حداقل قیمت",
+  "priceMaxAriaLabel": "فیلتر حداکثر قیمت",
+  "resultsCount": "{{count}} محصول یافت شد",
+  "loading": "در حال بارگذاری محصولات...",
+  "error": "بارگذاری محصولات ناموفق بود. لطفاً دوباره امتحان کنید.",
+  "noResults": "هیچ محصولی با معیارهای شما یافت نشد.",
+  "inStock": "موجود",
+  "outOfStock": "ناموجود",
+  "viewDetailsAria": "مشاهده جزئیات {{title}}",
+  "addToCartAria": "افزودن {{title}} به سبد خرید",
+  "addToCompareAria": "اضافه کردن {{title}} به مقایسه",
+  "removeFromCompareAria": "حذف {{title}} از مقایسه",
+  "addToCompare": "اضافه به مقایسه",
+  "removeFromCompare": "حذف از مقایسه",
+  "gridView": "نمایش گرید",
+  "listView": "نمایش لیست",
+  "previousPage": "صفحه قبلی",
+  "previous": "قبلی",
+  "nextPage": "صفحه بعدی",
+  "next": "بعدی"
+},
+
     "logo": {
-      "text": "FAITH",
+      "text": "فروشگاه عمده فروشی",
       "ariaLabel": "رفتن به صفحه اصلی فروشگاه عمده فروشی",
       "alt": "لوگوی فروشگاه عمده فروشی"
     },
@@ -11,10 +50,6 @@
       "close": "بستن",
       "ariaLabel": "جستجوی محصولات"
     },
-    "mobileMenu": {
-      "open": "باز کردن منوی موبایل",
-      "close": "بستن منوی موبایل"
-    },
     "nav": {
       "home": "صفحه اصلی",
       "products": "محصولات",
@@ -23,82 +58,36 @@
         "clothing": "پوشاک",
         "home": "خانه و باغ",
         "featured": "محصولات ویژه",
-        "deals": "تخفیف‌ها"
+        "deals": "تخفیف‌ها",
+        "blog": "وبلاگ"
       },
       "contact": "تماس با ما",
       "blog": "وبلاگ",
       "cart": "سبد خرید",
       "profile": "پروفایل",
-      "orders": "سفارش‌ها",
-      "wishlist": "لیست علاقه‌مندی‌ها",
-      "logout": "خروج",
       "currency": "انتخاب ارز",
       "toggleMenu": "باز و بسته کردن منوی ناوبری",
       "closeModal": "بستن پنجره سبد خرید",
-      "goToCart": "رفتن به سبد خرید"
-    },
-    "auth": {
-      "login": "ورود",
-      "signup": {
-        "title": "ثبت‌نام"
+      "goToCart": "رفتن به سبد خرید",
+      "language": {
+        "select": "انتخاب زبان",
+        "switchTo": "تغییر به {{language}}",
+        "english": "انگلیسی",
+        "persian": "فارسی",
+        "russian": "روسی"
       }
-    }
-  ,
-  "profile": {
-    "title": "پروفایل شما",
-    "avatarAlt": "آواتار کاربر",
-    "info": "اطلاعات حساب",
-    "email": "ایمیل",
-    "joined": "تاریخ عضویت",
-    "noUser": "لطفاً برای مشاهده پروفایل خود وارد شوید."
-  },
-  "orders": {
-    "title": "سفارش‌های شما",
-    "order": "سفارش",
-    "date": "تاریخ",
-    "total": "مجموع",
-    "status": "وضعیت",
-    "status": {
-      "pending": "در انتظار",
-      "shipped": "ارسال شده"
     },
-    "noOrders": "شما هیچ سفارشی ندارید.",
-    "noUser": "لطفاً برای مشاهده سفارش‌های خود وارد شوید."
-  },
-  "wishlist": {
-    "title": "لیست علاقه‌مندی‌های شما",
-    "price": "قیمت",
-    "remove": "حذف",
-    "empty": "لیست علاقه‌مندی‌های شما خالی است.",
-    "noUser": "لطفاً برای مشاهده لیست علاقه‌مندی‌های خود وارد شوید."
-  },
-  "auth": {
-    "login": {
-      "title": "ورود",
-      "email": "ایمیل",
-      "password": "رمز عبور",
-      "submit": "ورود",
-      "cancel": "لغو",
-      "loading": "در حال ورود..."
-    },
-    "signup": {
-      "title": "ثبت‌نام",
-      "name": "نام",
-      "email": "ایمیل",
-      "password": "رمز عبور",
-      "submit": "ثبت‌نام",
-      "cancel": "لغو",
-      "loading": "در حال ثبت‌نام..."
-    },
-    "errors": {
-      "emailRequired": "ایمیل الزامی است",
-      "invalidEmail": "آدرس ایمیل نامعتبر است",
-      "passwordRequired": "رمز عبور الزامی است",
-      "passwordTooShort": "رمز عبور باید حداقل 8 کاراکتر باشد",
-      "nameRequired": "نام الزامی است",
-      "loginFailed": "ورود ناموفق بود. لطفاً اطلاعات خود را بررسی کنید.",
-      "signupFailed": "ثبت‌نام ناموفق بود. لطفاً دوباره امتحان کنید."
-    }
+    "cartModal": {
+      "title": "سبد خرید",
+      "empty": "سبد خرید شما خالی است",
+      "price": "قیمت",
+      "decreaseQuantity": "کاهش تعداد برای {{item}}",
+      "increaseQuantity": "افزایش تعداد برای {{item}}",
+      "removeItem": "حذف {{item}} از سبد خرید",
+      "total": "مجموع",
+      "close": "بستن",
+      "checkout": "تسویه حساب"
+    
   },
   "languageSwitcher": {
     "selectLanguage": "انتخاب زبان",
@@ -109,21 +98,15 @@
       "ru": "روسی"
     }
   },
-  "cartModal": {
-    "title": "سبد خرید",
-    "empty": "سبد خرید شما خالی است",
-    "price": "قیمت",
-    "decreaseQuantity": "کاهش تعداد برای {{item}}",
-    "increaseQuantity": "افزایش تعداد برای {{item}}",
-    "removeItem": "حذف {{item}} از سبد خرید",
-    "total": "مجموع",
-    "close": "بستن",
-    "checkout": "تسویه حساب"
-  },
   "heroSection": {
     "title": "کشف محصولات عمده فروشی ممتاز",
     "description": "طیف گسترده‌ای از محصولات با کیفیت بالا برای کسب‌وکارهای سراسر جهان را کاوش کنید.",
     "exploreProducts": "کاوش محصولات"
+  },
+  "languages": {
+    "en": "انگلیسی",
+    "fa": "فارسی",
+    "ru": "روسی"
   },
   "featuredProducts": {
     "title": "محصولات ویژه",
@@ -176,7 +159,28 @@
     "description": "امروز با ما تماس بگیرید تا درباره نیازهای کسب‌وکار خود صحبت کنید و یک پیشنهاد سفارشی متناسب با نیازهایتان دریافت کنید.",
     "contactUs": "تماس با ما"
   },
-  "notifications": {
-    "badge": "شما {{count}} اعلان جدید دارید"
+  "blog": {
+    "title": "وبلاگ ما",
+    "description": "آخرین مقالات و بینش‌ها را بخوانید.",
+    "search": "جستجوی پست‌های وبلاگ",
+    "searchPlaceholder": "جستجوی پست‌ها...",
+    "searchButton": "جستجو",
+    "sortBy": "مرتب‌سازی بر اساس",
+    "sortByDate": "تاریخ",
+    "sortByTitle": "عنوان",
+    "noPosts": "پستی یافت نشد.",
+    "loading": "در حال بارگذاری...",
+    "error": {
+      "addToCart": "افزودن به سبد خرید ناموفق بود. لطفاً دوباره امتحان کنید.",
+      "generic": "مشکلی پیش آمد. لطفاً دوباره امتحان کنید."
+    },
+    "filterByCategory": "فیلتر بر اساس {{category}}",
+    "readMore": "بیشتر بخوانید",
+    "addToCart": "افزودن به سبد خرید",
+    "share": "اشتراک‌گذاری {{title}}",
+    "share.copied": "لینک در کلیپ‌بورد کپی شد!",
+    "page": "صفحه {{page}}",
+    "recommendedFor": "توصیه‌شده برای {{name}}",
+    "basedOnPreferences": "بر اساس علایق شما: {{categories}}"
   }
 }

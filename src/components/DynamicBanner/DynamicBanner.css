@@ -1,0 +1,78 @@
+/* DynamicBanner.css */
+.dynamic-banner {
+  position: relative;
+  width: 100%;
+  max-height: 400px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.banner-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.banner-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.banner-overlay h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.banner-overlay p {
+  margin: 10px 0 0;
+  font-size: 1rem;
+}
+
+.banner-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.slider-controls {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.slider-dot {
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.slider-dot.active {
+  background: #007bff;
+}
+
+.dynamic-banner.light .banner-overlay {
+  background: rgba(255, 255, 255, 0.7);
+  color: black;
+}
+
+.dynamic-banner.dark .banner-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+}
